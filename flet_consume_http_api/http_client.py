@@ -12,7 +12,7 @@ class HttpClient:
 
     def post(self, url , data): #data es un diccionario
         json_data = json.dumps(data)# conversion de diccionario a json, serializa un objeto a json
-        response = requests.post(url, json=json_data)
+        response = requests.post(self.url_base + url, data=json_data)
 
         if response.status_code == 200:
             print("Data created successfully")
@@ -22,8 +22,9 @@ class HttpClient:
 
     def put(self, url, data):
         json_data = json.dumps(data)
-
-        response = requests.put(url, json=json_data)
+        print(json_data)
+        print(self.url_base + url)
+        response = requests.put(self.url_base + url, data=json_data)
         if response.status_code == 200:
             print("Data updated successfully")
             return response.json()
@@ -31,7 +32,7 @@ class HttpClient:
             print("Error:", response.status_code)
 
     def delete(self, url):
-        response = requests.delete(url)
+        response = requests.delete(self.url_base + url)
         if response.status_code == 204:
             print("Data deleted successfully")
             return response.json()

@@ -8,7 +8,7 @@ sys.path.append('..')
 from flet_consume_http_api.users_service import UsersService
 
 
-def edit_user_view(id_user):
+def edit_user_view(id_user, go_to_list_users):
     users_service = UsersService()
 
     user = users_service.get_user_by(id_user)
@@ -25,6 +25,7 @@ def edit_user_view(id_user):
             "name": nombre_user,
             "age": edad_user
         })
+        go_to_list_users()
 
     actualizar_button = ft.FilledButton(text="Actualizar", on_click=on_click)
 

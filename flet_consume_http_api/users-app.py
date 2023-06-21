@@ -30,7 +30,7 @@ def main(page: ft.Page):
         elif troute.match("/users/:id"):
             print("INGRESO AL EDIT")
 
-            edit_user = edit_user_view(troute.id)
+            edit_user = edit_user_view(troute.id, go_to_list_users)
             page.views.append(edit_user)
 
         elif event.route == "/":
@@ -62,6 +62,9 @@ def main(page: ft.Page):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
+    def go_to_list_users():
+        page.route = "/"
+        page.update()
 
     page.on_route_change = route_change
     page.on_view_pop = view_pop
