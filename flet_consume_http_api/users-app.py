@@ -18,7 +18,7 @@ def main(page: ft.Page):
 
         if event.route == "/create/user":
             print("INGRESO AL CREATE")
-            create_user = create_user_view()
+            create_user = create_user_view(go_to_list_users)
             page.views.append(create_user)
 
         elif troute.match("/users/:id/detail"):

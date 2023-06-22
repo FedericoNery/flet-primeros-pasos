@@ -7,7 +7,7 @@ sys.path.append('..')
 
 from flet_consume_http_api.users_service import UsersService
 
-def create_user_view():
+def create_user_view(go_to_list_users):
     nombre_text_field = ft.TextField(label="Nombre", hint_text="Ingrese su nombre:")
 
     edad_text_field = ft.TextField(label="Edad", hint_text="Ingrese su edad:")
@@ -20,6 +20,7 @@ def create_user_view():
             "name": nombre_user,
             "age": edad_user
         })
+        go_to_list_users()
 
     crear_button = ft.FilledButton(text="Crear", on_click=on_click)
 
