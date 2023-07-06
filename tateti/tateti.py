@@ -12,3 +12,6 @@ class Tateti():
         self.es_turno_jugador_cruz = not self.es_turno_jugador_cruz
 
         return self.tablero[numero_casillero]
+
+    def termino_el_juego(self):
+        pass
