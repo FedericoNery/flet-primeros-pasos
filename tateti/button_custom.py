@@ -2,14 +2,16 @@ import flet as ft
 from flet_core import RoundedRectangleBorder, BorderSide
 
 
-def button_custom(identificador, tateti, actualizar_ui):
+def button_custom(identificador, tateti, actualizar_ui, termino_el_juego_ui):
     ref_elevated_button = ft.Ref[ft.ElevatedButton]()
     ref_text = ft.Ref[ft.Text]()
 
     def on_click(event):
         ref_elevated_button.current.disabled = True
         ref_elevated_button.current.content = ft.Text(tateti.aplicar_jugada(identificador), ref=ref_text, color=ft.colors.BLACK, size=40)
-        if
+        if tateti.termino_el_juego():
+            ganador = tateti.devolver_ganador()
+            termino_el_juego_ui(ganador)
         actualizar_ui()
 
     return ft.ElevatedButton(ref=ref_elevated_button,
